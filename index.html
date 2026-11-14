@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu opinión nos importa | Sorbetería Herrera</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde: #00C296;
+            --verde-oscuro: #009C78;
+            --coral: #FA897B;
+            --amarillo: #F4C542;
+            --lila: #CCABD8;
+            --oscuro: #263C37;
+            --gris: #71817B;
+            --fondo: #F7FAF8;
+            --blanco: #FFFFFF;
+            --borde: #E7EFEB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--fondo);
+            color: var(--oscuro);
+            min-height: 100vh;
+        }
+
+        /* Encabezado */
+
+        .hero {
+            background: linear-gradient(135deg, #00C296, #00A981);
+            padding: 48px 20px 100px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+        }
+
+        .hero::before {
+            width: 250px;
+            height: 250px;
+            top: -120px;
+            left: -50px;
+        }
+
+        .hero::after {
+            width: 300px;
+            height: 300px;
+            bottom: -200px;
+            right: -50px;
+        }
+
+        .brand {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 43px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 570px;
+            margin: auto;
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.92);
+        }
+
+        .hero-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        /* Contenedor principal */
+
+        .container {
+            width: min(760px, calc(100% - 32px));
+            margin: -65px auto 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-card {
+            background: var(--blanco);
+            border-radius: 24px;
+            padding: 38px;
+            box-shadow: 0 15px 50px rgba(30, 80, 60, 0.09);
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .intro h2 {
+            font-size: 23px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .intro p {
+            font-size: 13px;
+            color: var(--gris);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 32px 0 20px;
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 29px;
+            height: 29px;
+            background: #E5F9F3;
+            color: var(--verde-oscuro);
+            border-radius: 9px;
+            font-size: 13px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--borde);
+            margin: 28px 0;
+        }
+
+        /* Campos */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label,
+        .field-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--oscuro);
+        }
+
+        .required {
+            color: var(--coral);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid var(--borde);
+            border-radius: 11px;
+            background: #FCFDFC;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--oscuro);
+            outline: none;
+            transition: 0.25s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--verde);
+            box-shadow: 0 0 0 3px rgba(0,194,150,0.10);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #A9B5B0;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        /* Calificación por estrellas */
+
+        .rating-box {
+            background: #FFFCF2;
+            border: 1px solid #F7EBC3;
+            border-radius: 15px;
+            padding: 23px;
+            text-align: center;
+        }
+
+        .rating-box p {
+            font-size: 13px;
+            color: var(--gris);
+            margin-bottom: 14px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            flex-direction: row-reverse;
+            gap: 9px;
+        }
+
+        .stars input {
+            display: none;
+        }
+
+        .stars label {
+            font-size: 37px;
+            color: #D9D9D9;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .stars label:hover,
+        .stars label:hover ~ label,
+        .stars input:checked ~ label {
+            color: var(--amarillo);
+            transform: scale(1.08);
+        }
+
+        .rating-caption {
+            font-size: 12px;
+            color: var(--gris);
+            margin-top: 12px;
+        }
+
+        /* Opciones */
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .option {
+            position: relative;
+        }
+
+        .option input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .option label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 16px;
+            border: 1px solid var(--borde);
+            border-radius: 11px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .option input:checked + label {
+            border-color: var(--verde);
+            background: #E9FAF4;
+            color: var(--verde-oscuro);
+        }
+
+        .option input:focus-visible + label {
+            outline: 2px solid var(--verde);
+            outline-offset: 3px;
+        }
+
+        /* Botón */
+
+        .submit-button {
+            width: 100%;
+            border: none;
+            border-radius: 13px;
+            background: var(--verde);
+            color: white;
+            padding: 16px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.25s;
+            box-shadow: 0 7px 18px rgba(0,194,150,0.20);
+        }
+
+        .submit-button:hover {
+            background: var(--verde-oscuro);
+            transform: translateY(-2px);
+        }
+
+        .privacy {
+            text-align: center;
+            font-size: 11px;
+            color: var(--gris);
+            margin-top: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 0 20px 30px;
+            font-size: 12px;
+            color: var(--gris);
+        }
+
+        footer strong {
+            color: var(--verde-oscuro);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 38px 18px 90px;
+            }
+
+            .form-card {
+                padding: 25px 20px;
+                border-radius: 19px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .options {
+                gap: 8px;
+            }
+
+            .option label {
+                padding: 10px 12px;
+            }
+
+            .stars label {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="brand">Sorbetería Herrera</div>
+        <div class="hero-icon">🍦</div>
+        <h1>¡Queremos conocer tu opinión!</h1>
+        <p>
+            Tu experiencia nos ayuda a seguir creando momentos
+            deliciosos. Comparte con nosotros qué te parece
+            nuestro sorbete.
+        </p>
+    </header>
+
+    <main class="container">
+        <div class="form-card">
+
+            <div class="intro">
+                <h2>Encuesta de satisfacción</h2>
+                <p>Completa esta pequeña encuesta. ¡Solo te tomará unos minutos!</p>
+            </div>
+
+            <form id="surveyForm">
+
+                <!-- Información personal -->
+
+                <div class="section-title">
+                    <span class="section-number">01</span>
+                    Sobre ti
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label for="reviewerName">
+                            Tu nombre <span class="required">*</span>
+                        </label>
+                        <input type="text" id="reviewerName"
+                               name="reviewerName"
+                               placeholder="¿Cómo te llamas?"
+                               maxlength="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">
+                            Departamento <span class="required">*</span>
+                        </label>
+                        <select id="department" name="department" required>
+                            <option value="">Selecciona tu departamento</option>
+                            <option value="Carazo">Carazo</option>
+                            <option value="Managua">Managua</option>
+                            <option value="Masaya">Masaya</option>
+                            <option value="Granada">Granada</option>
+                            <option value="Rivas">Rivas</option>
+                            <option value="León">León</option>
+                            <option value="Chinandega">Chinandega</option>
+                            <option value="Estelí">Estelí</option>
+                            <option value="Matagalpa">Matagalpa</option>
+                            <option value="Jinotega">Jinotega</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="municipality">
+                            Municipio <span class="required">*</span>
+                        </label>
+                        <input type="text" id="municipality"
+                               name="municipality"
+                               placeholder="Tu municipio"
+                               maxlength="100" required>
+                    </div>
+
+                </div>
+
+                <hr class="divider">
+
+                <!-- Producto -->
+
+                <div class="section-title">
+                    <span class="section-number">02</span>
+                    Sobre el producto
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="line">
+                            Línea de producto <span class="required">*</span>
+                        </label>
+                        <select id="line" name="line" required>
+                            <option value="">Selecciona una línea</option>
+                            <option value="Tradicionales">Tradicionales</option>
+                            <option value="Light">Light</option>
+                            <option value="Nieves">Nieves</option>
+                            <option value="Especiales">Especiales</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productName">
+                            Producto <span class="required">*</span>
+                        </label>
+                        <input type="text" id="productName"
+                               name="productName"
+                               placeholder="Nombre del producto"
+                               maxlength="120" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="flavor">
+                            Sabor <span class="required">*</span>
+                        </label>
+                        <input type="text" id="flavor"
+                               name="flavor"
+                               placeholder="Ej. Chocolate"
+                               maxlength="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="presentation">
+                            Presentación <span class="required">*</span>
+                        </label>
+                        <select id="presentation" name="presentation" required>
+                            <option value="">Selecciona una presentación</option>
+                            <option value="Vaso pequeño">Vaso pequeño</option>
+                            <option value="Vaso mediano">Vaso mediano</option>
+                            <option value="Vaso grande">Vaso grande</option>
+                            <option value="Litro">Litro</option>
+                            <option value="Medio litro">Medio litro</option>
+                            <option value="Otra">Otra</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <hr class="divider">
+
+                <!-- Satisfacción -->
+
+                <div class="section-title">
+                    <span class="section-number">03</span>
+                    Tu experiencia
+                </div>
+
+                <div class="rating-box">
+                    <p>¿Qué calificación le das al producto?</p>
+
+                    <div class="stars">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5" title="Excelente">★</label>
+
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" title="Muy bueno">★</label>
+
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" title="Bueno">★</label>
+
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" title="Regular">★</label>
+
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1" title="Malo">★</label>
+                    </div>
+
+                    <div class="rating-caption">
+                        1 estrella: Malo · 5 estrellas: Excelente
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 24px;">
+                    <span class="field-label">
+                        ¿Recomendarías nuestros productos?
+                        <span class="required">*</span>
+                    </span>
+
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="recommendYes"
+                                   name="wouldRecommend" value="true" required>
+                            <label for="recommendYes">😊 Sí, claro</label>
+                        </div>
+
+                        <div class="option">
+                            <input type="radio" id="recommendNo"
+                                   name="wouldRecommend" value="false">
+                            <label for="recommendNo">No por ahora</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 24px;">
+                    <label for="sentiment">
+                        ¿Cómo describirías tu experiencia?
+                        <span class="required">*</span>
+                    </label>
+
+                    <select id="sentiment" name="sentiment" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="Muy satisfecho">😍 Muy satisfecho</option>
+                        <option value="Satisfecho">😊 Satisfecho</option>
+                        <option value="Neutral">😐 Neutral</option>
+                        <option value="Insatisfecho">🙁 Insatisfecho</option>
+                        <option value="Muy insatisfecho">😞 Muy insatisfecho</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-top: 24px;">
+                    <label for="comment">
+                        ¿Quieres compartir algún comentario?
+                    </label>
+
+                    <textarea id="comment" name="comment"
+                              maxlength="1000"
+                              placeholder="Cuéntanos qué te gustó o qué podríamos mejorar..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Enviar mi opinión ♥
+                </button>
+
+                <p class="privacy">
+                    🔒 Tu opinión nos ayuda a mejorar y ofrecerte
+                    productos cada vez mejores.
+                </p>
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        Hecho con <strong>♥</strong> por Sorbetería Herrera
+        <br>
+        Más de 70 años compartiendo tradición y sabor.
+    </footer>
+
+</body>
+</html>
