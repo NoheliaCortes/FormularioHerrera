@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Tu opinión nos importa | Sorbetería Herrera</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +38,7 @@
             min-height: 100vh;
         }
 
-        /* Encabezado */
+        /* ENCABEZADO */
 
         .hero {
             background: linear-gradient(135deg, #00C296, #00A981);
@@ -76,6 +77,8 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -83,6 +86,8 @@
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
@@ -91,14 +96,18 @@
             font-size: 15px;
             line-height: 1.8;
             color: rgba(255,255,255,0.92);
+            position: relative;
+            z-index: 1;
         }
 
         .hero-icon {
             font-size: 42px;
             margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Contenedor principal */
+        /* CONTENEDOR */
 
         .container {
             width: min(760px, calc(100% - 32px));
@@ -157,7 +166,7 @@
             margin: 28px 0;
         }
 
-        /* Campos */
+        /* CAMPOS */
 
         .form-grid {
             display: grid;
@@ -218,7 +227,7 @@
             min-height: 110px;
         }
 
-        /* Calificación por estrellas */
+        /* ESTRELLAS */
 
         .rating-box {
             background: #FFFCF2;
@@ -265,7 +274,7 @@
             margin-top: 12px;
         }
 
-        /* Opciones */
+        /* OPCIONES */
 
         .options {
             display: flex;
@@ -308,7 +317,7 @@
             outline-offset: 3px;
         }
 
-        /* Botón */
+        /* BOTÓN */
 
         .submit-button {
             width: 100%;
@@ -331,12 +340,45 @@
             transform: translateY(-2px);
         }
 
+        .submit-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .privacy {
             text-align: center;
             font-size: 11px;
             color: var(--gris);
             margin-top: 16px;
         }
+
+        /* MENSAJES */
+
+        .message {
+            display: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .message.success {
+            display: block;
+            background: #E9FAF4;
+            color: #087D5D;
+            border: 1px solid #BCEBDD;
+        }
+
+        .message.error {
+            display: block;
+            background: #FFF0EF;
+            color: #B94740;
+            border: 1px solid #FFD0CC;
+        }
+
+        /* PIE */
 
         footer {
             text-align: center;
@@ -349,7 +391,7 @@
             color: var(--verde-oscuro);
         }
 
-        /* Responsive */
+        /* RESPONSIVE */
 
         @media (max-width: 600px) {
             .hero {
@@ -386,10 +428,15 @@
 
 <body>
 
+    <!-- ENCABEZADO -->
+
     <header class="hero">
         <div class="brand">Sorbetería Herrera</div>
+
         <div class="hero-icon">🍦</div>
+
         <h1>¡Queremos conocer tu opinión!</h1>
+
         <p>
             Tu experiencia nos ayuda a seguir creando momentos
             deliciosos. Comparte con nosotros qué te parece
@@ -397,17 +444,23 @@
         </p>
     </header>
 
+    <!-- FORMULARIO -->
+
     <main class="container">
+
         <div class="form-card">
 
             <div class="intro">
                 <h2>Encuesta de satisfacción</h2>
-                <p>Completa esta pequeña encuesta. ¡Solo te tomará unos minutos!</p>
+                <p>
+                    Completa esta pequeña encuesta.
+                    ¡Solo te tomará unos minutos!
+                </p>
             </div>
 
             <form id="surveyForm">
 
-                <!-- Información personal -->
+                <!-- SECCIÓN 1 -->
 
                 <div class="section-title">
                     <span class="section-number">01</span>
@@ -420,16 +473,21 @@
                         <label for="reviewerName">
                             Tu nombre <span class="required">*</span>
                         </label>
-                        <input type="text" id="reviewerName"
-                               name="reviewerName"
-                               placeholder="¿Cómo te llamas?"
-                               maxlength="100" required>
+
+                        <input
+                            type="text"
+                            id="reviewerName"
+                            name="reviewerName"
+                            placeholder="¿Cómo te llamas?"
+                            maxlength="100"
+                            required>
                     </div>
 
                     <div class="form-group">
                         <label for="department">
                             Departamento <span class="required">*</span>
                         </label>
+
                         <select id="department" name="department" required>
                             <option value="">Selecciona tu departamento</option>
                             <option value="Carazo">Carazo</option>
@@ -450,17 +508,21 @@
                         <label for="municipality">
                             Municipio <span class="required">*</span>
                         </label>
-                        <input type="text" id="municipality"
-                               name="municipality"
-                               placeholder="Tu municipio"
-                               maxlength="100" required>
+
+                        <input
+                            type="text"
+                            id="municipality"
+                            name="municipality"
+                            placeholder="Tu municipio"
+                            maxlength="100"
+                            required>
                     </div>
 
                 </div>
 
                 <hr class="divider">
 
-                <!-- Producto -->
+                <!-- SECCIÓN 2 -->
 
                 <div class="section-title">
                     <span class="section-number">02</span>
@@ -473,6 +535,7 @@
                         <label for="line">
                             Línea de producto <span class="required">*</span>
                         </label>
+
                         <select id="line" name="line" required>
                             <option value="">Selecciona una línea</option>
                             <option value="Tradicionales">Tradicionales</option>
@@ -486,26 +549,35 @@
                         <label for="productName">
                             Producto <span class="required">*</span>
                         </label>
-                        <input type="text" id="productName"
-                               name="productName"
-                               placeholder="Nombre del producto"
-                               maxlength="120" required>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            name="productName"
+                            placeholder="Nombre del producto"
+                            maxlength="150"
+                            required>
                     </div>
 
                     <div class="form-group">
                         <label for="flavor">
                             Sabor <span class="required">*</span>
                         </label>
-                        <input type="text" id="flavor"
-                               name="flavor"
-                               placeholder="Ej. Chocolate"
-                               maxlength="100" required>
+
+                        <input
+                            type="text"
+                            id="flavor"
+                            name="flavor"
+                            placeholder="Ej. Chocolate"
+                            maxlength="100"
+                            required>
                     </div>
 
                     <div class="form-group">
                         <label for="presentation">
                             Presentación <span class="required">*</span>
                         </label>
+
                         <select id="presentation" name="presentation" required>
                             <option value="">Selecciona una presentación</option>
                             <option value="Vaso pequeño">Vaso pequeño</option>
@@ -521,60 +593,92 @@
 
                 <hr class="divider">
 
-                <!-- Satisfacción -->
+                <!-- SECCIÓN 3 -->
 
                 <div class="section-title">
                     <span class="section-number">03</span>
                     Tu experiencia
                 </div>
 
+                <!-- CALIFICACIÓN -->
+
                 <div class="rating-box">
+
                     <p>¿Qué calificación le das al producto?</p>
 
                     <div class="stars">
-                        <input type="radio" id="star5" name="rating" value="5" required>
+
+                        <input type="radio" id="star5"
+                               name="rating" value="5" required>
                         <label for="star5" title="Excelente">★</label>
 
-                        <input type="radio" id="star4" name="rating" value="4">
+                        <input type="radio" id="star4"
+                               name="rating" value="4">
                         <label for="star4" title="Muy bueno">★</label>
 
-                        <input type="radio" id="star3" name="rating" value="3">
+                        <input type="radio" id="star3"
+                               name="rating" value="3">
                         <label for="star3" title="Bueno">★</label>
 
-                        <input type="radio" id="star2" name="rating" value="2">
+                        <input type="radio" id="star2"
+                               name="rating" value="2">
                         <label for="star2" title="Regular">★</label>
 
-                        <input type="radio" id="star1" name="rating" value="1">
+                        <input type="radio" id="star1"
+                               name="rating" value="1">
                         <label for="star1" title="Malo">★</label>
+
                     </div>
 
                     <div class="rating-caption">
                         1 estrella: Malo · 5 estrellas: Excelente
                     </div>
+
                 </div>
 
+                <!-- RECOMENDACIÓN -->
+
                 <div class="form-group" style="margin-top: 24px;">
+
                     <span class="field-label">
                         ¿Recomendarías nuestros productos?
                         <span class="required">*</span>
                     </span>
 
                     <div class="options">
+
                         <div class="option">
-                            <input type="radio" id="recommendYes"
-                                   name="wouldRecommend" value="true" required>
-                            <label for="recommendYes">😊 Sí, claro</label>
+                            <input
+                                type="radio"
+                                id="recommendYes"
+                                name="wouldRecommend"
+                                value="true"
+                                required>
+
+                            <label for="recommendYes">
+                                😊 Sí, claro
+                            </label>
                         </div>
 
                         <div class="option">
-                            <input type="radio" id="recommendNo"
-                                   name="wouldRecommend" value="false">
-                            <label for="recommendNo">No por ahora</label>
+                            <input
+                                type="radio"
+                                id="recommendNo"
+                                name="wouldRecommend"
+                                value="false">
+
+                            <label for="recommendNo">
+                                No por ahora
+                            </label>
                         </div>
+
                     </div>
                 </div>
 
+                <!-- SENTIMIENTO -->
+
                 <div class="form-group" style="margin-top: 24px;">
+
                     <label for="sentiment">
                         ¿Cómo describirías tu experiencia?
                         <span class="required">*</span>
@@ -588,17 +692,33 @@
                         <option value="Insatisfecho">🙁 Insatisfecho</option>
                         <option value="Muy insatisfecho">😞 Muy insatisfecho</option>
                     </select>
+
                 </div>
+
+                <!-- COMENTARIO -->
 
                 <div class="form-group" style="margin-top: 24px;">
+
                     <label for="comment">
                         ¿Quieres compartir algún comentario?
+                        <span class="required">*</span>
                     </label>
 
-                    <textarea id="comment" name="comment"
-                              maxlength="1000"
-                              placeholder="Cuéntanos qué te gustó o qué podríamos mejorar..."></textarea>
+                    <textarea
+                        id="comment"
+                        name="comment"
+                        maxlength="2000"
+                        placeholder="Cuéntanos qué te gustó o qué podríamos mejorar..."
+                        required></textarea>
+
                 </div>
+
+                <!-- MENSAJES -->
+
+                <div id="successMessage" class="message success" role="status" aria-live="polite"></div>
+                <div id="errorMessage" class="message error" role="alert" aria-live="assertive"></div>
+
+                <!-- BOTÓN -->
 
                 <button type="submit" class="submit-button">
                     Enviar mi opinión ♥
@@ -610,14 +730,186 @@
                 </p>
 
             </form>
+
         </div>
+
     </main>
+
+    <!-- PIE DE PÁGINA -->
 
     <footer>
         Hecho con <strong>♥</strong> por Sorbetería Herrera
         <br>
         Más de 70 años compartiendo tradición y sabor.
     </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // URL pública de HerreraSystem.API
+        const API_URL =
+            "https://api-herrera-deega3a2e8d8cbge.canadacentral-01.azurewebsites.net/api/consumer-surveys";
+
+        const form = document.getElementById("surveyForm");
+        const submitButton = form.querySelector(".submit-button");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+        // Ocultar mensajes
+        function clearMessages() {
+            successMessage.textContent = "";
+            errorMessage.textContent = "";
+
+            successMessage.style.display = "none";
+            errorMessage.style.display = "none";
+        }
+
+        // Mostrar éxito
+        function showSuccess(message) {
+            clearMessages();
+
+            successMessage.textContent = message;
+            successMessage.style.display = "block";
+
+            successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+        // Mostrar error
+        function showError(message) {
+            clearMessages();
+
+            errorMessage.textContent = message;
+            errorMessage.style.display = "block";
+
+            errorMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+        // Enviar encuesta
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+            clearMessages();
+
+            // Validación del navegador
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const formData = new FormData(form);
+
+            // Construir DTO
+            const survey = {
+
+                reviewerName:
+                    formData.get("reviewerName").trim(),
+
+                productName:
+                    formData.get("productName").trim(),
+
+                line:
+                    formData.get("line"),
+
+                flavor:
+                    formData.get("flavor").trim(),
+
+                presentation:
+                    formData.get("presentation"),
+
+                municipality:
+                    formData.get("municipality").trim(),
+
+                department:
+                    formData.get("department"),
+
+                rating:
+                    Number(formData.get("rating")),
+
+                wouldRecommend:
+                    formData.get("wouldRecommend") === "true",
+
+                sentiment:
+                    formData.get("sentiment"),
+
+                comment:
+                    formData.get("comment").trim()
+
+            };
+
+            // Bloquear botón durante el envío
+            submitButton.disabled = true;
+            submitButton.textContent = "Enviando tu opinión...";
+
+            try {
+
+                const response = await fetch(API_URL, {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+
+                    body: JSON.stringify(survey)
+
+                });
+
+                if (!response.ok) {
+
+                    const error = await response.json().catch(() => null);
+
+                    const message =
+                        error?.message ||
+                        error?.title ||
+                        `Error del servidor (${response.status})`;
+
+                    throw new Error(message);
+                }
+
+                // Confirmación de registro
+                showSuccess(
+                    "¡Muchas gracias por compartir tu opinión! 💚 " +
+                    "Tu encuesta ha sido registrada correctamente."
+                );
+
+                // Limpiar formulario
+                form.reset();
+
+            } catch (error) {
+
+                console.error(
+                    "Error al registrar encuesta:",
+                    error
+                );
+
+                showError(
+                    "No fue posible registrar tu encuesta. " +
+                    error.message
+                );
+
+            } finally {
+
+                // Habilitar nuevamente el botón
+                submitButton.disabled = false;
+                submitButton.textContent = "Enviar mi opinión ♥";
+
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
